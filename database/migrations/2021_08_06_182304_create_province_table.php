@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class RenameTable extends Migration
+class CreateProvinceTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,11 @@ class RenameTable extends Migration
      */
     public function up()
     {
-        Schema::rename('product_categories','product_category');
+        Schema::create('province', function (Blueprint $table) {
+            $table->id();
+            $table->string('_name')->nullable();
+            $table->string('_code')->nullable();
+        });
     }
 
     /**
@@ -23,6 +27,6 @@ class RenameTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('province');
     }
 }

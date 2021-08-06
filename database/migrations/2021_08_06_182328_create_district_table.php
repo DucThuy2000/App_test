@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class DeleteProductCategories extends Migration
+class CreateDistrictTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,12 @@ class DeleteProductCategories extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists("product_categories");
+        Schema::create('district', function (Blueprint $table) {
+            $table->id();
+            $table->string('_name')->nullable();
+            $table->string('_prefix')->nullable();
+            $table->unsignedInteger('_province_id')->nullable();
+        });
     }
 
     /**
@@ -23,6 +28,6 @@ class DeleteProductCategories extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('district');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePartnersTable extends Migration
+class CreateRoleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreatePartnersTable extends Migration
      */
     public function up()
     {
-        Schema::create('partners', function (Blueprint $table) {
+        Schema::create('role', function (Blueprint $table) {
             $table->id();
-            $table->string('name',255);
-            $table->string('picture', 255)->nullable();
-            $table->string('status', 55)->nullable();
-            $table->integer('ordering')->default(0);
-            $table->string('slug')->nullable();
+            $table->string('name')->nullable();
+            $table->string('description')->nullable();
+            $table->text('permissions')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreatePartnersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('partners');
+        Schema::dropIfExists('role');
     }
 }

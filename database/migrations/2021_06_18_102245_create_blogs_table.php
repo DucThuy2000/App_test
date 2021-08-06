@@ -23,6 +23,7 @@ class CreateBlogsTable extends Migration
             $table->text('description')->nullable();
             $table->text('quote')->nullable();
             $table->string('status', 255)->nullable();
+            $table->integer('category_id')->nullable();
             $table->string('type', 255)->nullable();
             $table->string('slug', 255)->nullable();
             $table->string('meta_title', 255)->nullable();

@@ -18,6 +18,7 @@ class CreateFaqsTable extends Migration
             $table->string("question", 255)->nullable();
             $table->text("answer")->nullable();
             $table->text("description")->nullable();
+            $table->string("status", 255)->nullable();
             $table->timestamps();
         });
     }

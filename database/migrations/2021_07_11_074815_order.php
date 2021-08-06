@@ -21,6 +21,7 @@ class Order extends Migration
             $table->string("pay_method", 255)->nullable();
             $table->string("price_total", 255)->nullable();
             $table->string("status", 255)->default("Đang xử lý");
+            $table->string("note", 255)->nullable();
             $table->timestamps();
         });
     }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class DropTable extends Migration
+class CreateRelationProductTagsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class DropTable extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('password_resets');
-        Schema::dropIfExists('failed_jobs');
+        Schema::create('rl_prod_tag', function (Blueprint $table) {
+            $table->id();
+            $table->integer('prod_id');
+            $table->integer('tag_id');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -24,6 +28,6 @@ class DropTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('rl_prod_tag');
     }
 }

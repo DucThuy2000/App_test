@@ -18,6 +18,7 @@ class CreateWidgetsTable extends Migration
             $table->string("name", 255)->nullable();
             $table->string("location", 255)->nullable();
             $table->text("content");
+            $table->string("status", 255)->nullable();
             $table->timestamps();
         });
     }

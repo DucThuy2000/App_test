@@ -17,10 +17,13 @@ class CreateOrderDetailsTable extends Migration
             $table->id();
             $table->integer("user_id");
             $table->integer("order_id");
+            $table->integer("product_id");
             $table->string("product_name",255)->nullable();
+            $table->string("product_picture", 255)->nullable();
             $table->string("product_price", 255)->nullable();
             $table->string("product_quantity", 255)->nullable();
             $table->string("price_total", 255)->nullable();
+            $table->string("status", 255)->nullable();
             $table->timestamps();
         });
     }

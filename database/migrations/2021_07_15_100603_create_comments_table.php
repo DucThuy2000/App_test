@@ -19,6 +19,7 @@ class CreateCommentsTable extends Migration
             $table->integer("user_id");
             $table->text("content")->nullable();
             $table->integer("likes")->default(0);
+            $table->integer('parent_id')->default(0);
             $table->timestamps();
         });
     }
