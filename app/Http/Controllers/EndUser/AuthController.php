@@ -126,10 +126,6 @@ class AuthController extends Controller
     }
 
     public function registerOrLoginUserSocialite($data){
-        //Xử lý avatar khi đăng nhập socialite
-        $fileContents = file_get_contents($data -> getAvatar());
-        File::put(public_path() . '/picture/user/' . $data->getId() . ".jpg", $fileContents);
-
         $user = MainModel::where("email", "=", $data -> email)->first();
         //dd($user);
         if(!$user){
