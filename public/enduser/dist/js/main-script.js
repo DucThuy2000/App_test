@@ -358,9 +358,6 @@ $('.product-nav').slick({
 // ScrollUp Active
 $('.nice-select').niceSelect ();
 
-// Image zoom effect
-$('.img-zoom').zoom();
-
 // Fancybox Active
 $('[data-fancybox="images"]').fancybox({
     hash: false,
