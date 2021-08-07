@@ -77,7 +77,7 @@ class ShopController extends Controller
             $keyword = $request['keyword'];
         }
 
-        $category = Product_category::where("name", "LIKE", "%" . $keyword . "%")->first();
+        $category = Product_category::where("name", "LIKE", $keyword . "%")->first();
 
         if($category){
             $model = $category->products()->where("status","active");
