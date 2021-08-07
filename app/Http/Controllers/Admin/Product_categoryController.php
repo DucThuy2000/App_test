@@ -32,8 +32,6 @@ class Product_categoryController extends AdminController
             'items' => [
                 ['label' => 'Slug', 'name' => 'slug', 'type' => 'slug'],
                 ['label' => 'Meta Title', 'name' => 'meta_title', 'type' => 'text'],
-                ['label' => 'Meta Description', 'name' => 'meta_description', 'type' => 'text'],
-                ['label' => 'Meta Keyword', 'name' => 'meta_keyword', 'type' => 'text']
             ]
         ],
     ];
@@ -59,6 +57,44 @@ class Product_categoryController extends AdminController
         view()->share("fieldForm", $this -> fieldForm);
         view()->share("fieldList", $this -> fieldList);
         $this -> model = new MainModel();
+    }
+
+    public function store(Request $request){
+        //Gửi request sang hàm validateForm để xác thực
+        $this -> validateForm($request);
+        $data = $this -> getData($request -> all());
+        //Gán các trường trong db bằng value
+        if($data){
+            foreach ($data as $key => $value){
+                if( is_object($value) ){
+                    $value = $this -> uploadImage($value);
+                }
+
+                if($key == "name"){
+                    $value = ucfirst($value);
+                }
+                $this -> model -> $key = $value; //create
+            }
+        }
+
+        $this -> model -> save(); //store
+
+        // Xử lý với tags
+        if( isset($request->tag_id)  && count($request->tag_id) > 0 ){
+            $tag_id = $request->tag_id;
+            $tags_id = [];
+            foreach($tag_id as $k => $v){
+                // Kiểm tra xem có phải là số hoặc chữ số hay không
+                if(is_numeric ($v)){
+                    $tags_id[] = $v;
+                }
+            }
+            // attach(array);
+            $this-> model -> tags() -> attach($tags_id);
+        }
+
+        Session::flash("action_success", "Thêm mới thành công");
+        return redirect() -> route("admin." . $this -> controllerName . ".index");
     }
 
 }
