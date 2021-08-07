@@ -20,7 +20,7 @@ class AdminController extends BaseController
     protected $resize;
 
     public function index(){
-        $data = $this -> model -> paginate(10);
+        $data = $this -> model -> orderBy('id') -> paginate(10);
         return view($this -> pathView . "index",compact("data"));
     }
 
