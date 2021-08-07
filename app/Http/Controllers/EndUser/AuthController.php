@@ -121,10 +121,11 @@ class AuthController extends Controller
 
     public function handleProviderCallback(string $provider){
         $user = Socialite::driver($provider)->user();
-        if($provider == "facebook"){
-            $fileContents = file_get_contents($user -> getAvatar());
-            dd($fileContents);
-        }
+        $fileContents = file_get_contents($user -> getAvatar());
+        File::put(public_path() . '/picture/user/' . $user->getId() . ".jpg", $fileContents);
+
+        $picture = public_path('picture/user/' . $user->getId() . ".jpg");
+        dd($picture);
         $this -> registerOrLoginUserSocialite($user);
         return redirect() -> intended(RouteServiceProvider::HOME);
     }
