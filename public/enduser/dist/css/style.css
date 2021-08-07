@@ -46,7 +46,7 @@
 /*  01. Theme default CSS
 /*----------------------------------------*/
 /*-- Google Font --*/
-@import url("https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&display=swap');
 /*-- Common Style --*/
 *, *::after, *::before {
   box-sizing: border-box;
@@ -63,14 +63,14 @@ body {
   font-style: normal;
   font-weight: 400;
   visibility: visible;
-  font-family: "Rubik", sans-serif;
+    font-family: 'Montserrat', sans-serif;
   color: #454545;
   position: relative;
 }
 
 h1, h2, h3, h4, h5, h6 {
   color: #3a3a3a;
-  font-family: "Rubik", sans-serif;
+    font-family: 'Montserrat', sans-serif;
   margin-top: 0;
 }
 
@@ -992,7 +992,7 @@ img.mfp-img {
 .page-pagination li {
   font-size: 16px;
   line-height: 24px;
-  font-family: "Rubik", sans-serif;
+    font-family: 'Montserrat', sans-serif;
   color: #3a3a3a;
   text-align: center;
   margin: 2px 3px;
@@ -4685,7 +4685,7 @@ img.mfp-img {
 .cart-page-total ul li {
   border-bottom: 1px solid #ebebeb;
   color: #252525;
-  font-family: "Montserrat",sans-serif;
+    font-family: 'Montserrat', sans-serif;
   font-size: 15px;
   font-weight: 700;
   list-style: outside none none;
