@@ -74,10 +74,10 @@ class ShopController extends Controller
         $carts = session() -> get("cart");
 
         if(isset($request['keyword'])){
-            $keyword = $request['keyword'];
+            $keyword = ucfirst($request['keyword']);
         }
 
-        $category = Product_category::where("name", "LIKE", $keyword . "%")->first();
+        $category = Product_category::where("name", "LIKE", "%" . $keyword . "%")->first();
 
         if($category){
             $model = $category->products()->where("status","active");
