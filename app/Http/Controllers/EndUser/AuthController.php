@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\File;
 
 class AuthController extends Controller
 {
@@ -120,6 +121,10 @@ class AuthController extends Controller
 
     public function handleProviderCallback(string $provider){
         $user = Socialite::driver($provider)->user();
+        if($provider == "facebook"){
+            $fileContents = file_get_contents($user -> getAvatar());
+            dd($fileContents);
+        }
         $this -> registerOrLoginUserSocialite($user);
         return redirect() -> intended(RouteServiceProvider::HOME);
     }
