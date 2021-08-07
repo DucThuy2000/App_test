@@ -5,7 +5,7 @@
 
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <a class="navbar-brand" href="{{ route("admin.user.index") }}">MY APP
-        <span class="first-name">@if(Auth::check())({{ Auth::user() -> first_name }})@endif</span>
+        <span class="first-name">@if(Auth::check())({{ Auth::user() -> user_name }})@endif</span>
     </a>
     <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
     <!-- Navbar Search-->

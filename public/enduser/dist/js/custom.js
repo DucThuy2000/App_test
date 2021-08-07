@@ -211,7 +211,7 @@
             let province_id = $(this).val();
             let _this = $(this);
 
-            let url = "http://demo.clock.com/thanh-toan/get-district";
+            let url = "https://demo-clock-app.herokuapp.com/thanh-toan/get-district";
 
             $.ajax({
                 headers: {
@@ -250,7 +250,7 @@
         $("#select-district").on("change", function (){
             let district_id = $(this).val();
             let _this = $(this);
-            let url = "http://demo.clock.com/thanh-toan/get-ward";
+            let url = "https://demo-clock-app.herokuapp.com/thanh-toan/get-ward";
 
             $.ajax({
                 headers: {
@@ -346,7 +346,7 @@
                     success: function (data){
                         if(data.code === 200){
                             console.log(data.orderId);
-                            window.location = "http://demo.clock.com/thanh-toan/ghi-nhan-don-hang/" + data.orderId;
+                            window.location = "https://demo-clock-app.herokuapp.com/thanh-toan/ghi-nhan-don-hang/" + data.orderId;
                         }
                     },
 
@@ -786,7 +786,7 @@
 
                 success: function (data){
                     if(data.code === 200){
-                        window.location = 'http://demo.clock.com/forgot-password';
+                        window.location = 'https://demo-clock-app.herokuapp.com/forgot-password';
                     }
                 },
 
@@ -827,7 +827,7 @@
                         }
 
                         //Chuyển tới trang đăng nhập
-                        window.location = "http://demo.clock.com/dang-nhap";
+                        window.location = "https://demo-clock-app.herokuapp.com/dang-nhap";
                     }
                     else{
                         printErrorMesseage(data.error);
