@@ -57,11 +57,11 @@
                 </div>
                 <div class="col-lg-9 col-sm-9 col-sm-9 col-12">
                     <div class="user-layout-main">
-                        @if(Request::url() == "https://demo-clock-app.herokuapp.com/ca-nhan")
+                        @if(Request::url() == "http://demo-clock-app.herokuapp.com/ca-nhan")
                             @include("enduser.pages.Account.profile")
-                        @elseif(Request::url() == "https://demo-clock-app.herokuapp.com/ca-nhan/don-hang-cua-toi")
+                        @elseif(Request::url() == "http://demo-clock-app.herokuapp.com/ca-nhan/don-hang-cua-toi")
                             @include("enduser.pages.Account.myOrder")
-                        @elseif(Request::url() == "https://demo-clock-app.herokuapp.com/ca-nhan/don-hang-cua-toi/" . @$order_id)
+                        @elseif(Request::url() == "http://demo-clock-app.herokuapp.com/ca-nhan/don-hang-cua-toi/" . @$order_id)
                             @include("enduser.pages.Account.orderDetails", ["id" => @$order_id])
                         @endif
                     </div>
