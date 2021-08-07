@@ -31,7 +31,7 @@
                             @if($user -> provider_id == NULL)
                                 <img src="{{ \App\Helper\Functions::getImage("user", $user -> picture) }}" alt="">
                             @else
-                                <img src="{{ $user -> picture }}" alt="">
+                                <img src="{{ asset("picture/user/" . $user -> provider_id . ".jpg") }}" alt="">
                             @endif
                         </div>
                         <h4 class="user-name">{{ $user -> user_name }}</h4>
