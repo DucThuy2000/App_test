@@ -26,14 +26,18 @@
                 success: function (data){
                     if(data.code === 200){
                         $('.sweet-alert .insert-alert').fadeIn('slow');
-                        setInterval(function (){
-                            location.reload().fadeIn("slow");
-                        }, 1000)
+
+                        //Change amount of carts
+                        $('.count-carts').text(data.countCart);
+
                     }
                 },
 
                 complete: function (){
                     $(".overlay-snipper").removeClass("open");
+                    setTimeout(function (){
+                        $('.sweet-alert .insert-alert').fadeOut();
+                    },1000);
                 },
 
                 error: function (){
@@ -124,6 +128,17 @@
                 }
             })
         }
+
+        /*------ Change price of a product ------*/
+        $(".quantity-input").on("change", function (){
+
+            var price = $(this).parents(".cart-detail").find(".subtotal-text").text();
+            var parsePrice = parseInt(price.replace(",", ""));
+            var changePrice = $(this).val() * parsePrice;
+
+            $(this).parents(".cart-detail").find(".total-price-a-product").text(new Intl.NumberFormat().format(changePrice));
+        })
+
 
         /*------ COUPON CART ------*/
         $(document).on("click", ".btn-coupon", applyCoupon);

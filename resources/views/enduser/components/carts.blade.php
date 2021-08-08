@@ -28,13 +28,13 @@
                         <a href="{{ route("shop.productDetail", ["slug" => @$item['slug']]) }}">{{ @$item['name'] }}</a>
                     </td>
                     <td class="plantmore-product-price">
-                        <span class="amount subtotal-text">${{ number_format(@$item['subtotal']) }}</span>
+                        $<span class="amount subtotal-text">{{ number_format(@$item['subtotal']) }}</span>
                     </td>
                     <td class="plantmore-product-quantity">
                         <input value="{{ @$item['quantity'] }}" type="number" class="quantity-input" min="0">
                     </td>
                     <td class="product-subtotal">
-                        <span class="amount">${{ number_format(@$totalPrice) }}</span>
+                        $<span class="amount total-price-a-product">{{ number_format(@$totalPrice) }}</span>
                     </td>
                     <td class="plantmore-product-remove">
                         <a class="delete-cart" href="" data-id="{{ @$item['id'] }}">

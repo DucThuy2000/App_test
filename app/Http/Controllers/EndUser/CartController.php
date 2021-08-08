@@ -18,10 +18,9 @@ class CartController extends Controller
     }
 
     public function addToCart($id){
+        $cart = session() -> get("cart");
 
         $product = Product::find($id);
-
-        $cart = session() -> get("cart");
 
         if(isset($cart[$id])){
             $cart[$id]["quantity"]++;
@@ -40,9 +39,15 @@ class CartController extends Controller
 
         session() -> put("cart", $cart);
 
+        $totalCart = [];
+        foreach ($cart as $id => $detail){
+           array_push($totalCart,$detail);
+        }
+
         return response() -> json([
             "code" => 200,
-            "message" => "success",
+            "countCart" => count($cart),
+
         ], 200);
     }
 

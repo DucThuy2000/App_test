@@ -44,51 +44,10 @@
                         </div>
 
                         <div class="shopping-cart-wrap">
-                            <a href="#">
+                            <a href="{{ route("cart.showCart") }}">
                                 <i class="icon-basket-loaded"></i>
-                                <span class="cart-total">@if(!empty($carts)){{ count(@$carts) }} @else 0 @endif</span>
+                                <span class="cart-total count-carts">@if(!empty($carts)){{ count(@$carts) }} @else 0 @endif</span>
                             </a>
-                            <ul class="mini-cart">
-                                @if(!empty($carts))
-                                    @foreach($carts as $item)
-                                        @php
-                                            $totalPrice = @$totalPrice + $item['subtotal'];
-                                        @endphp
-                                        <li class="cart-item">
-                                            <div class="cart-image d-flex justify-content-center">
-                                                <a href="{{ route("shop.productDetail", ["slug" => @$item['slug']]) }}">
-                                                    <img width="50" alt="{{ $item['name'] }}" src="{{ \App\Helper\Functions::getImage("product", $item['picture'], "standard") }}">
-                                                </a>
-                                            </div>
-                                            <div class="cart-title">
-                                                <a href="{{ route("shop.productDetail", ["slug" => @$item['slug']]) }}">
-                                                    <h4>{{ $item['name'] }}</h4>
-                                                </a>
-                                                <div class="quanti-price-wrap">
-                                                    <span class="quantity">{{ $item['quantity'] }} ×</span>
-                                                    <div class="price-box"><span class="new-price">${{ number_format($item['subtotal']) }}</span></div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    @endforeach
-                                    <li class="subtotal-box">
-                                        <div class="subtotal-title">
-                                            <h3>Sub-Total :</h3>
-                                            <span>${{number_format(@$totalPrice)}}</span>
-                                        </div>
-                                    </li>
-                                    <li class="mini-cart-btns">
-                                        <div class="cart-btns">
-                                            <a href="{{ route("cart.showCart") }}">Giỏ hàng</a>
-                                            <a href="{{ route("checkout.checkLoginToCheckOut") }}">Thanh toán</a>
-                                        </div>
-                                    </li>
-                                @else
-                                    <li class="cart-item p-0 justify-content-center">
-                                        <span class="text-dark"> Giỏ hàng trống !!</span>
-                                    </li>
-                                @endif
-                            </ul>
                         </div>
 
                         <div class="user-home ml-2">
@@ -167,60 +126,41 @@
                         </div>
 
                         <div class="shopping-cart-wrap">
-                            <a href="#">
+                            <a href="{{ route("cart.showCart") }}">
                                 <i class="icon-basket-loaded"></i>
-                                <span class="cart-total">@if(!empty($carts)){{ count(@$carts) }} @else 0 @endif</span>
+                                <span class="cart-total count-carts">@if(!empty($carts)){{ count(@$carts) }} @else 0 @endif</span>
                             </a>
-                            <ul class="mini-cart">
-                                @if(!empty($carts))
-                                    @foreach($carts as $item)
-                                        @php
-                                            $totalPrice = @$totalPrice + $item['subtotal'];
-                                        @endphp
-                                        <li class="cart-item">
-                                            <div class="cart-image d-flex justify-content-center">
-                                                <a href="{{ route("shop.productDetail", ["slug" => @$item['slug']]) }}">
-                                                    <img width="50" alt="{{ $item['name'] }}" src="{{ \App\Helper\Functions::getImage("product", $item['picture'], "standard") }}">
-                                                </a>
-                                            </div>
-                                            <div class="cart-title">
-                                                <a href="{{ route("shop.productDetail", ["slug" => @$item['slug']]) }}">
-                                                    <h4>{{ $item['name'] }}</h4>
-                                                </a>
-                                                <div class="quanti-price-wrap">
-                                                    <span class="quantity">{{ $item['quantity'] }} ×</span>
-                                                    <div class="price-box"><span class="new-price">${{ number_format($item['subtotal']) }}</span></div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    @endforeach
-                                    <li class="subtotal-box">
-                                        <div class="subtotal-title">
-                                            <h3>Sub-Total :</h3>
-                                            <span>${{number_format(@$totalPrice)}}</span>
-                                        </div>
-                                    </li>
-                                    <li class="mini-cart-btns">
-                                        <div class="cart-btns">
-                                            <a href="{{ route("cart.showCart") }}">Giỏ hàng</a>
-                                            <a href="{{ route("checkout.checkLoginToCheckOut") }}">Thanh toán</a>
-                                        </div>
-                                    </li>
-                                @else
-                                    <li class="cart-item p-0 justify-content-center">
-                                        <span class="text-dark"> Giỏ hàng trống !!</span>
-                                    </li>
-                                @endif
-                            </ul>
                         </div>
+
+                        <div class="user-home ml-2">
+                            @php
+                                if(\Illuminate\Support\Facades\Auth::check()){
+                                    $route = route("user_profile.showAccountDetail");
+                                }
+                                else{
+                                    $route = route("auth.login");
+                                }
+                            @endphp
+                            <a href="{{@$route}}">
+                                <i class="icon-user"></i>
+                            </a>
+                        </div>
+
+                        @if(\Illuminate\Support\Facades\Auth::check())
+                            <div class="user-logout ml-2">
+                                <a href="{{ route("auth.logout") }}">
+                                    <i class="icon-logout"></i>
+                                </a>
+                            </div>
+                        @endif
 
                         <div class="mobile-menu-btn d-block d-lg-none">
                             <div class="off-canvas-btn">
                                 <a href="#"><img src="https://demo.hasthemes.com/ruiz-preview/ruiz/assets/images/icon/bg-menu.png" alt=""></a>
                             </div>
                         </div>
-
                     </div>
+
                 </div>
 
             </div>
