@@ -220,16 +220,6 @@ a:focus {
   width: 100%;
 }
 
-@media only screen and (max-width: 767px) {
-  .container {
-    width: 450px;
-  }
-}
-@media only screen and (max-width: 479px) {
-  .container {
-    width: 300px;
-  }
-}
 .bold {
   font-weight: 700;
 }
@@ -2571,7 +2561,9 @@ img.mfp-img {
 }
 @media only screen and (max-width: 767px) {
   .hero-slider-one .single-slide {
-    height: 420px;
+      height: 420px;
+      background-position: center;
+      background-repeat: no-repeat;
   }
 }
 .hero-slider-one .slick-arrow {
